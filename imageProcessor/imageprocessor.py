@@ -11,7 +11,7 @@ from botocore.config import Config
 # LOCAL_MQTT_PORT = 1883
 LOCAL_MQTT_TOPIC = "remote_faces"
 LOCAL_MQTT_HOST="0.0.0.0"
-LOCAL_MQTT_PORT=#32546
+LOCAL_MQTT_PORT=32021
 
 #output_dir = "/home/image_processor/images"
 
