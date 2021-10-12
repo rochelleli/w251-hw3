@@ -46,7 +46,7 @@ while(True):
 
 		local_mqttclient.publish(LOCAL_MQTT_TOPIC, msg)
 
-		cv.imshow('face',face)
+		# cv.imshow('face',face)
 		if cv.waitKey(1) & 0xFF == ord('q'):
       			break
 

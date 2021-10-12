@@ -41,11 +41,11 @@ def on_message(client, userdata, msg):
         # if we wanted to re-publish this message, something like this should work
         msg = msg.payload
         decode = np.frombuffer(msg,dtype='uint8')
-        img = cv.imdecode(decode, flags=1)#cv.IMREAD_COLOR)
+        img = cv2.imdecode(decode, flags=1)
         # msg = np.frombuffer(msg.payload, dtype='uint8')
 		# img = cv2.imdecode(msg, flags=1)
 
-        cv.imwrite(f'face_{COUNTER}.png', img)
+        cv2.imwrite(f'face_{COUNTER}.png', img)
         try:
             response = S3_client.upload_file(f'face_{COUNTER}.png', 'w251-hw3-bucket', f'face_{COUNTER}.png')
         except ClientError as e:
