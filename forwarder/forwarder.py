@@ -3,7 +3,7 @@ import sys
 
 REMOTE_MQTT_HOST = "13.57.178.110"
 REMOTE_MQTT_PORT = 1883
-REMOTE_MQTT_TOPIC = "remote_faces"
+REMOTE_MQTT_TOPIC = "faces"
 
 LOCAL_MQTT_HOST = "mosquitto-service"
 LOCAL_MQTT_PORT = 1883
