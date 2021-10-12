@@ -5,8 +5,8 @@ REMOTE_MQTT_HOST = "13.57.178.110"
 REMOTE_MQTT_PORT = 1883
 REMOTE_MQTT_TOPIC = "remote_faces"
 
-LOCAL_MQTT_HOST = "0.0.0.0"
-LOCAL_MQTT_PORT = 31239
+LOCAL_MQTT_HOST = "mosquitto-service"
+LOCAL_MQTT_PORT = 1883
 LOCAL_MQTT_TOPIC = "faces"
 
 def on_connect_local(client, userdata, flags, rc):
@@ -19,9 +19,9 @@ def on_connect_remote(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
 	try:
-		print("message received: ",str(msg.payload.decode("utf-8")))
+		print("message received: ")#,str(msg.payload.decode("utf-8")))
 		msg = msg.payload
-		remote_mgqttclient.publish(REMOTE_MQTT_TOPIC, payload=msg, qos=0, retain=False)
+		#remote_mgqttclient.publish(REMOTE_MQTT_TOPIC, payload=msg, qos=0, retain=False)
 	except:
 		print("Unexpected error:", sys.exc_info()[0])
 
@@ -36,12 +36,12 @@ local_mqttclient.on_connect = on_connect_local
 local_mqttclient.on_message = on_message
 local_mqttclient.on_disconnect = on_disconnect_local
 
-remote_mqttclient = mqtt.Client("remote")
-remote_mqttclient.on_connect = on_connect_remote
-remote_mqttclient.on_publish = on_publish
+#remote_mqttclient = mqtt.Client("remote")
+#remote_mqttclient.on_connect = on_connect_remote
+#remote_mqttclient.on_publish = on_publish
 
 local_mqttclient.connect(LOCAL_MQTT_HOST, LOCAL_MQTT_PORT, 60)
-remote_mqttclient.connect(REMOTE_MQTT_HOST, REMOTE_MQTT_PORT, 60)
+#remote_mqttclient.connect(REMOTE_MQTT_HOST, REMOTE_MQTT_PORT, 60)
 
-local_mqttclient.loop_start()
-remote_mqttclient.loop_forever()
+local_mqttclient.loop_forever()
+#remote_mqttclient.loop_forever()

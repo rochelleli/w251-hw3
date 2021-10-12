@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mosquitto-deployment
+  name: image-processor
 spec:
   selector:
     matchLabels:
-      app: mosquitto
+      app: image-process
   replicas: 1 # tells deployment to run 1 pods matching the template
   template:
     metadata:
       labels:
-        app: mosquitto
+        app: image-process
     spec:
+      hostNetwork: true
       containers:
-      - name: mosquitto
-        image: rochelleli/mosquittohw3:v1
+      - name: image-process
+        image: rochelleli/imageProcessor:v1
         ports:
         - containerPort: 1883
