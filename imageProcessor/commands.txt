@@ -1,0 +1,4 @@
+docker build -t rochelleli/imageprocessor:v1 --no-cache .
+docker push rochelleli/imageprocessor:v1
+
+kubectl apply -f imageprocessor.yaml

@@ -1,0 +1,5 @@
+docker build -t rochelleli/forwarder:v1 --no-cache .
+docker push rochelleli/forwarder:v1
+
+
+kubectl apply -f forwarder.yaml

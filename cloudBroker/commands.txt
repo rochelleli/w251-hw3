@@ -1,0 +1,7 @@
+docker build -t rochelleli/cloudbroker:v1 --no-cache .
+docker push rochelleli/cloudbroker:v1
+
+kubectl apply -f mosquitto.yaml
+kubectl apply -f mosquittoService.yaml
+
+kubectl get service mosquitto-service

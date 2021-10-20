@@ -1,0 +1,12 @@
+Docker Commands
+
+docker build -f mosquittoDockerfile -t rochelleli/mosquittohw3:v1 --no-cache .
+docker push rochelleli/mosquittohw3:v1
+
+
+Deploy yamls
+
+kubectl apply -f mosquitto.yaml
+kubectl apply -f mosquittoService.yaml
+
+kubectl get service mosquitto-service

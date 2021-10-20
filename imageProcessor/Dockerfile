@@ -4,7 +4,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 RUN export OPENBLAS_CORETYPE=ARMV8
-RUN apt-get update && apt-get install -y python3 python3-pip python3-opencv
+RUN apt-get update
+RUN apt-get install -y python3 python3-pip python3-opencv mosquitto-clients
 #RUN a command to intall the MQTT python client
 RUN pip3 install paho-mqtt
 RUN pip3 install numpy
