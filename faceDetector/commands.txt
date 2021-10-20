@@ -2,3 +2,7 @@ docker build -t rochelleli/facedetector:v1 --no-cache .
 docker push rochelleli/facedetector:v1
 
 kubectl apply -f facedetector.yaml
+
+kubectl delete deployments facedetector
+kubectl delete deployments mosquitto-forwarder-deployment
+kubectl delete deployments mosquitto-deployment
