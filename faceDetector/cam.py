@@ -2,8 +2,8 @@ import numpy as np
 import cv2 as cv
 import paho.mqtt.client as mqtt
 
-LOCAL_MQTT_HOST = "localhost" #"broker"
-LOCAL_MQTT_PORT = 31239
+LOCAL_MQTT_HOST = "mosquitto-service"#"localhost" #"broker"
+LOCAL_MQTT_PORT = 1883 #31239
 LOCAL_MQTT_TOPIC = "faces"
 
 
@@ -47,8 +47,8 @@ while(True):
 		local_mqttclient.publish(LOCAL_MQTT_TOPIC, msg)
 
 		# cv.imshow('face',face)
-		if cv.waitKey(1) & 0xFF == ord('q'):
-      			break
+		# if cv.waitKey(1) & 0xFF == ord('q'):
+      	# 		break
 
 # When everything is done, release the capture
 cap.release()

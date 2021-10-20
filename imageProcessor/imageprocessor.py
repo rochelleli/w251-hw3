@@ -10,12 +10,12 @@ from botocore.config import Config
 # LOCAL_MQTT_HOST="mosquitto-service"
 # LOCAL_MQTT_PORT = 1883
 LOCAL_MQTT_TOPIC = "faces"
-LOCAL_MQTT_HOST="0.0.0.0"
-LOCAL_MQTT_PORT=32021
+LOCAL_MQTT_HOST="mosquitto-service"
+LOCAL_MQTT_PORT=1883
 
 #output_dir = "/home/image_processor/images"
 
-my_config = Config(region_name = 'us-west-2')
+my_config = Config(region_name = 'us-west-1')
 S3_client = boto3.client(
     's3',
     aws_access_key_id=aws_access_key_id,

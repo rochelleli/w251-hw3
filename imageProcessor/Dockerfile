@@ -13,8 +13,6 @@ RUN pip3 install boto3
 # RUN pip3 install Cython
 COPY credentials.py credentials.py 
 COPY imageprocessor.py imageprocessor.py 
-# COPY s3_test.py s3_test.py 
-# COPY Dockerfile Dockerfile 
-# Copy your listener.py file into the container
-CMD python3 /app/imageprocessor.py
-# CMD python3 /app/s3_test.py
+
+# CMD python3 /app/imageprocessor.py
+CMD ["python3","imageprocessor.py"]
