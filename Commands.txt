@@ -10,3 +10,7 @@ kubectl apply -f mosquitto.yaml
 kubectl apply -f mosquittoService.yaml
 
 kubectl get service mosquitto-service
+
+kubectl get services
+kubectl get deployments
+kubectl get pods
