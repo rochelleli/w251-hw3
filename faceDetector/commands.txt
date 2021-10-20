@@ -1,0 +1,4 @@
+docker build -t rochelleli/facedetector:v1 --no-cache .
+docker push rochelleli/facedetector:v1
+
+kubectl apply -f facedetector.yaml
