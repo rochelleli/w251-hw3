@@ -14,14 +14,22 @@ LOCAL_MQTT_TOPIC = "faces"
 # LOCAL_MQTT_PORT=32157
 
 #output_dir = "/home/image_processor/images"
-
+count = 0
 my_config = Config(region_name = 'us-west-1')
-S3_client = boto3.client(
-    's3',
-    aws_access_key_id=aws_access_key_id,
-    aws_secret_access_key=aws_secret_access_key,
-)
-
+S3_client = boto3.client('s3')
+#     's3',
+#     aws_access_key_id=aws_access_key_id,
+#     aws_secret_access_key=aws_secret_access_key,
+# )
+def save_img(img_bytes):
+    global count
+    response = S3_client.put_object(
+        Bucket = 'w251-hw3-bucket'
+        Body=img_bytes,
+        Key='face{:d}.png'.format(count),
+        ACL='public-read',
+        ContentType='image/png'
+    )
 def on_connect(client, userdata, flags, rc):
 	print("connected to local with rc: " + str(rc))
 	client.subscribe(LOCAL_MQTT_TOPIC)
@@ -39,18 +47,20 @@ def on_message(client, userdata, msg):
         # publish the message
         # remote_mqttclient.publish(REMOTE_MQTT_TOPIC,msg.payload)
         # if we wanted to re-publish this message, something like this should work
-        msg = msg.payload
-        decode = np.frombuffer(msg,dtype='uint8')
-        img = cv2.imdecode(decode, flags=1)
-        # msg = np.frombuffer(msg.payload, dtype='uint8')
-		# img = cv2.imdecode(msg, flags=1)
+        # msg = msg.payload
+        # decode = np.frombuffer(msg,dtype='uint8')
+        # img = cv2.imdecode(decode, flags=1)
+        # # msg = np.frombuffer(msg.payload, dtype='uint8')
+		# # img = cv2.imdecode(msg, flags=1)
 
-        cv2.imwrite(f'face_{COUNTER}.png', img)
-        try:
-            response = S3_client.upload_file(f'face_{COUNTER}.png', 'w251-hw3-bucket', f'face_{COUNTER}.png')
-        except ClientError as e:
-            print(e)
-        COUNTER+=1
+        # cv2.imwrite(f'face_{COUNTER}.png', img)
+        # try:
+        #     response = S3_client.upload_file(f'face_{COUNTER}.png', 'w251-hw3-bucket', f'face_{COUNTER}.png')
+        # except ClientError as e:
+        #     print(e)
+        # COUNTER+=1
+
+        save_img(msg.payload)
 		
 
 		# imgName = output_dir + "face-" + str(counter) + ".png"
