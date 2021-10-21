@@ -1,10 +1,9 @@
 FROM ubuntu:latest
 # this is needed to make sure we can see the log output
 ENV DEBIAN_FRONTEND noninteractive
-ENV TZ=America
-# ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED=1
 WORKDIR /app
-# RUN export OPENBLAS_CORETYPE=ARMV8
+RUN export OPENBLAS_CORETYPE=ARMV8
 RUN apt-get update
 RUN apt-get install -y python3 python3-pip mosquitto-clients
 #python3-opencv
