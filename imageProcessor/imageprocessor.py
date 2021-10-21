@@ -30,6 +30,8 @@ def save_img(img_bytes):
         ACL='public-read',
         ContentType='image/png'
     )
+    count+=1
+
 def on_connect(client, userdata, flags, rc):
 	print("connected to local with rc: " + str(rc))
 	client.subscribe(LOCAL_MQTT_TOPIC)
@@ -74,7 +76,7 @@ def on_message(client, userdata, msg):
 	except:
 		print("Unexpected error:", sys.exc_info()[0])
 
-local_mqttclient = mqtt.client()
+local_mqttclient = mqtt.Client()
 local_mqttclient.on_connect = on_connect
 local_mattclient.connect(LOCAL_MQTT_HOST, LOCAL_MQTT_PORT, 60)
 local_mqttclient.on_message = on_message

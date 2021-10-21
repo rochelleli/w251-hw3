@@ -16,5 +16,5 @@ spec:
       containers:
       - name: image-process
         image: rochelleli/imageprocessor:v1
-        ports:
-        - containerPort: 1883
+        # ports:
+        # - containerPort: 1883
