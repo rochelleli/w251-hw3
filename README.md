@@ -7,16 +7,18 @@ Commands to deploy yamls and docker commands to build and push onto dockerhub ar
 
 1. Brokers
 > a. Broker on the Jetson
+>
 > b. Broker in the cloud
 2. Listeners
 > a. listener on Jetson (forwarder)
+>
 > b. listener in the cloud (image processor)
 3. Publisher: face detector
 
 ## MQTT topics and QoS
 
 ### MQTT
-MQTT is a messaging protocol for Internet of Things (IoT) that is designed as an extremely lightweight publish/subscribe messaging transport [link: https://mqtt.org/]. Publishers publish with a topic to the broker and the broker sends the message to subscribers that are subscribed to that topic. The topic name I chose was "faces" because we are sending face data.
+MQTT is a messaging protocol for Internet of Things (IoT) that is designed as an extremely lightweight publish/subscribe messaging transport [reference: https://mqtt.org/]. Publishers publish with a topic to the broker and the broker sends the message to subscribers that are subscribed to that topic. The topic name I chose was "faces" because we are sending face data.
 
 ### QoS [reference: https://assetwolf.com/learn/mqtt-qos-understanding-quality-of-service]
 Quality of Service (QoS) in MQTT messaging is an agreement between sender and receiver on the guarantee of delivering a message.
