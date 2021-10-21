@@ -5,16 +5,16 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: image-process
+      app: mosquitto
   replicas: 1 # tells deployment to run 1 pods matching the template
   template:
     metadata:
       labels:
-        app: image-process
+        app: mosquitto
     spec:
       hostNetwork: true
       containers:
       - name: image-process
         image: rochelleli/imageprocessor:v1
-        # ports:
-        # - containerPort: 1883
+        ports:
+        - containerPort: 1883
